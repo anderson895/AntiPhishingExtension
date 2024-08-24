@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Anti-Phishing Extension",
+  "version": "1.0",
+  "description": "Blocks phishing sites and alerts the user.",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "notifications",
+    "scripting",
+    "tabs",
+    "webNavigation",
+     "storage",
+     "alarms",
+     "contextMenus"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/1.png",
+      "48": "icons/1.png",
+      "128": "icons/1.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/1.png","icons/2.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

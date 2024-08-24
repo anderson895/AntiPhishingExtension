@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Warning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: red;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .modal-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: max-content;
+            height: max-content;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            z-index: 10000;
+        }
+        .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+        }
+        .modal-content h1 {
+            font-size: 18px;
+            color: black;
+            text-align: center;
+        }
+        .modal-content p {
+            color: rgb(8, 193, 8);
+            text-align: center;
+        }
+        .modal-content .status {
+            width: 90%;
+            background-color: black;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .modal-content .status span {
+            font-weight: bold;
+        }
+        .modal-content button {
+            padding: 8px 16px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .warning-content {
+            text-align: center;
+        }
+        .warning-content h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .warning-content p {
+            font-size: 1.5em;
+            margin: 5px 0;
+        }
+        #toggleExtension {
+            cursor: pointer;
+            margin: 10px;
+            background: black;
+            border-radius: 50%;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background-color: red; color: white;position:'relative'">
+        <div style="position:absolute;top:10px;left:20px;z-index:99px;display:flex;gap:2;align-items:center;">
+        <img src="./icons/1.png" style="width:150px;height:150px;object-fit:fill;background:white;border-radius:50%;"  alt='logo' />
+        <p style="font-size:34px;color:white;">PHISHNET</p>
+        </div>
+        <h1 style="font-size: 72px;">SUSPECTED PHISHINGs</h1>
+        <p style="font-size: 32px;">This site is dangerous and has been blocked.</p>
+    <p style="font-size:28px;" id="siteUrl">BLOCKED URL:<span id="siteUrl"></span></p>
+      </div>
+
+    <div class="modal-container">
+        <div class="modal-content">
+            <img src="./icons/1.png" alt="Phisnet Logo">
+            <div id="toggleExtension" style="cursor: pointer; margin: 10px; background:black;border-radius:50%;padding:12px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"/>
+                    <line x1="12" y1="2" x2="12" y2="12"/>
+                </svg>
+            </div>
+            <h1>PHISNET CURRENTLY ENABLED</h1>
+            <p id="toggleExtension">DISABLED</p>
+            <div class="status">
+                <p>WEBSITE URL: <span id="siteUrlStatus"></span></p>
+                <p>STATUS: <span id="siteStatus" style="color: red;">BLOCK</span></p>
+            </div>
+            <button id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Replace this with the actual URL if needed
+        document.getElementById('siteUrl').textContent = window.location.href;
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            window.close(); // Close the current tab
+        });
+    </script>
+</body>
+</html>
